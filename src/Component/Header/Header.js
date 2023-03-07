@@ -2,19 +2,21 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import './Header.scss'
 
 function Header() {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="/">React</Navbar.Brand>
+        {/* <Navbar.Brand href="/">React</Navbar.Brand> */}
+        <NavLink to='/' className="navbar-brand">React</NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Link to='/' className="nav-link">Home</Link>
-            <Link to='/user' className="nav-link">User</Link>
-            <Link to='/admin' className="nav-link">Admin</Link>
+            <NavLink to='/' className="nav-link">Home</NavLink>
+            <NavLink to='/user' className="nav-link">User</NavLink>
+            <NavLink to='/admin' className="nav-link">Admin</NavLink>
           </Nav>
           <Nav>
             <NavDropdown title="Setting" id="basic-nav-dropdown">

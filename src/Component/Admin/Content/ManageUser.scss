@@ -1,0 +1,41 @@
+.preview-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    border: 1px dashed #ccc;
+    border-radius: 5px;
+    color: #ccc;
+
+    img{
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
+
+.update-image {
+    display: flex;
+    gap: 5px;
+    border-radius: 5px;
+    width: fit-content;
+    align-items: center;
+    justify-items: center;
+    background: #eeeeee;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #d7d6d6;
+    }
+}
+
+.btn-add-user {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+}

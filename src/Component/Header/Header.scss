@@ -1,0 +1,7 @@
+.me-auto {
+    .nav-link{
+        &.active{
+            color: #00bfff !important;
+        }
+    }
+}
