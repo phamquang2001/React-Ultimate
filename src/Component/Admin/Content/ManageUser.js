@@ -1,29 +1,85 @@
 import ModalCreateUser from "./ModalCreateUser";
 import "./ManageUser.scss";
 import { AiFillPlusCircle } from "react-icons/ai";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import TableUser from "./TableUser";
+import axios from "axios";
+import ModalUpdateUser from "./ModalUpdateUser";
+import ModalViewUser from "./ModelViewUser"
 
-function ManageUser() {
-  const [showModal, setShowModal] = useState(false);
+function ManageUser(props) {
+  const [showViewModal, setShowViewModal] = useState(false);
+  const [showCreateModal, setShowCreateModal] = useState(false);
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
+  const [listUser, setListUser] = useState([]);
+  const [dataUpdate, setDataUpdate] = useState({});
+  const [dataView, setDataView] = useState({});
+
+  const viewUser = (e) =>{
+    setDataView(e)
+    setShowViewModal(true)
+  }
+  
+  const updateUser = (e) =>{
+    setDataUpdate(e)
+    setShowUpdateModal(true);
+  }
+
+  useEffect(() => {
+      getAPIList();
+  }, []);
+
+  const getAPIList = async () => {
+    let res = await axios.get("http://localhost:8081/api/v1/participant/all");
+    if (res.data.EC === 0) {
+      setListUser(res.data.DT);
+    }
+  };
+
   return (
-    <div>
+    <div className="manage-user">
       <span>ManagerUser</span>
       <div>
         <button
           className="btn-add-user btn btn-primary"
           onClick={() => {
-            setShowModal(true);
+            setShowCreateModal(true);
           }}
         >
           <AiFillPlusCircle /> Add new User
         </button>
       </div>
       <div>
-        <ModalCreateUser show={showModal} 
-        setShow={setShowModal}
+        <ModalCreateUser 
+        showCreateModal={showCreateModal} 
+        setShowCreateModal={setShowCreateModal} 
+        getAPIList = {getAPIList}
         />
       </div>
-      <div>List User</div>
+      <div>
+        <ModalViewUser
+        dataView = {dataView}
+        showViewModal = {showViewModal}
+        setShowViewModal = {setShowViewModal}
+        />
+      </div>
+      <div>
+        <ModalUpdateUser
+        dataUpdate = {dataUpdate}
+        setDataUpdate= {setDataUpdate}
+        showUpdateModal={showUpdateModal} 
+        setShowUpdateModal={setShowUpdateModal} 
+        getAPIList = {getAPIList}
+        />
+      </div>
+      <div className="list-user">
+        List User
+        <TableUser 
+        viewUser = {viewUser}
+        updateUser={updateUser} 
+        listUser = {listUser}
+        />
+      </div>
     </div>
   );
 }

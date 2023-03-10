@@ -1,3 +1,10 @@
+.manage-user{
+    width: 100%;
+    .list-user{
+        width: 100%;
+    }
+}
+
 .preview-image {
     display: flex;
     justify-content: center;
@@ -10,6 +17,7 @@
     img{
         max-width: 100%;
         max-height: 100%;
+        border-radius: 10px;
     }
 }
 
@@ -34,7 +42,6 @@
     display: flex;
     align-items: center;
     gap: 5px;
-    margin: 5px;
     border: none;
     border-radius: 5px;
     font-size: 20px;
