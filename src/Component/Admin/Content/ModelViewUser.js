@@ -64,7 +64,8 @@ const ModalViewUser = (props) => {
 
             <div className="preview-image">
               {dataView.image ? (
-                <img src={`data:image/jpeg;base64,${dataView.image}`}></img>
+                // <img src={`data:image/jpeg;base64,${dataView.image}`}></img>
+                <img src={dataView.image}></img>
               ) : (
                 <span>Preview Image</span>
               )}

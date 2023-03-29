@@ -3,9 +3,13 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import './Header.scss'
 
 function Header() {
+
+  const navigate = useNavigate()
+
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -20,7 +24,7 @@ function Header() {
           </Nav>
           <Nav>
             <NavDropdown title="Setting" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/login">Log in</NavDropdown.Item>
+              <NavDropdown.Item onClick={(() => navigate("/login"))}>Log in</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
                 Log out
               </NavDropdown.Item>

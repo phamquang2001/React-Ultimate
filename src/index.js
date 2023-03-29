@@ -11,24 +11,36 @@ import Home from "./Component/Home/Home";
 import ManageUser from "./Component/Admin/Content/ManageUser";
 import Dashboard from "./Component/Admin/Content/Dashboard";
 import Login from "./Component/User/Login";
-
-
+import { ToastContainer } from "react-toastify";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route index element={<Home />}></Route>
-          <Route path="/user" element={<User />}></Route>
-        </Route>
-        <Route path="/admin" element={<Admin />}>
-          <Route index element={<Dashboard />}></Route>
-          <Route path="admin-user" element={<ManageUser />}></Route>
-        </Route>
-        <Route path="/login" element={<Login />}></Route>
-      </Routes>
-    </BrowserRouter>
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />}>
+        <Route index element={<Home />}></Route>
+        <Route path="/user" element={<User />}></Route>
+        
+      </Route>
+      <Route path="/admin" element={<Admin />}>
+        <Route index element={<Dashboard />}></Route>
+        <Route path="admin-user" element={<ManageUser />}></Route>
+      </Route>
+      <Route path="/login" element={<Login />}></Route>
+    </Routes>
+    <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+  </BrowserRouter>
   // </React.StrictMode>
 );
 

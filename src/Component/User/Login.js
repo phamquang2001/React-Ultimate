@@ -2,20 +2,29 @@ import { useState } from "react";
 import "./Login.scss";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate()
-
-    const handleSubmit = () =>{
-        let data = axios.post('http://localhost:8081/api/v1/login', {email: email , password: password})
-        console.log(data);
+  const navigate = useNavigate();
+  const handleSubmit = async () =>{
+    const data = await axios.post('http://localhost:8081/api/v1/login', {email: email, password: password})
+    console.log(data.data);
+    if(data && data.data.EC == -2){
+      toast.error(data.data.EM);
     }
+    if(data && data.data.EC == 0) {
+      toast.success(data.data.EM);
+      navigate("/")
+    }else {
+      toast.error(data.data.EM);
+    }
+  }
 
   return (
     <div>
-      <div className="pt-2">
+      <div>
         <span>Don't have an account yet?</span>
         <button className="btn-sign-up">Sign up</button>
       </div>
@@ -49,9 +58,9 @@ function Login() {
             <span>Forgot password?</span>
           </div>
           <div>
-            <button className="w-100 btn-login" onClick={() => handleSubmit()}>Log in to Typeform</button>
+            <button className="w-100 btn-login" onClick={() =>handleSubmit()}>Log in to Typeform</button>
           </div>
-          <div className="back-home mt-2 text-center" onClick={() => navigate("/")}>&#60;&#60; Go to homepage</div>
+          <div className="back-home text-center" onClick={() =>navigate('/')}> &lt;&lt;Go to homepage</div>
         </div>
       </div>
     </div>
