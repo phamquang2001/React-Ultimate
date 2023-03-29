@@ -1,0 +1,28 @@
+
+.btn-sign-up {
+    border-radius: 5px;
+    border: 1px solid black;
+    margin-left: 10px;
+}
+
+.sign-in-content {
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 20px;
+    // padding: 60px 42px 20px;
+}
+
+.sign-in-input {
+    border-radius: 5px;
+    input{
+        opacity: 0.5;
+    }
+}
+
+.btn-login {
+    border-radius: 5px;
+    border: none;
+    background-color: black;
+    color: white;
+    height: 50px;
+}

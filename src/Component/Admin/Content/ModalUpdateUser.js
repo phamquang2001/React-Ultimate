@@ -9,7 +9,12 @@ import axios from 'axios'
 import { toast } from "react-toastify";
 
 const ModalUpdateUser = (props) => {
-  const {showUpdateModal, setShowUpdateModal, dataUpdate, setDataUpdate} = props;
+  const {showUpdateModal, 
+    setShowUpdateModal, 
+    dataUpdate, 
+    setDataUpdate, 
+    currentPage
+    } = props;
 
   
   const handleClose = () => {
@@ -19,13 +24,10 @@ const ModalUpdateUser = (props) => {
   const handleAddUser = async () => {
     toast.success("Thanh cong");
     handleClose();
-    const form = new FormData();
-    form.append('id', dataUpdate.id);
-    form.append('username', username);
-    form.append('role', role);
-    form.append('userImage', image);
-    await axios.put('http://localhost:8081/api/v1/participant', form)
-    props.getAPIList()
+
+    const id = dataUpdate.id
+    await axios.put(`https://rr4ruu-8000.csb.app/DT/${id}`, {email,username,role,image})
+    props.getUserPaginate(currentPage)
   }
 
   const [email, setEmail] = useState('');
@@ -112,7 +114,8 @@ const ModalUpdateUser = (props) => {
               <Form.Group as={Col} controlId="formGridState">
                 <Form.Label>Role</Form.Label>
                 <Form.Select 
-                defaultValue="Choose..." 
+                // defaultValue="Choose..." 
+                value={role}
                 onChange={(e) =>{
                   setRole(e.target.value)
                 }}>

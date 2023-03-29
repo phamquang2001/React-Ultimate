@@ -3,7 +3,7 @@ import Table from "react-bootstrap/Table";
 
 
 function TableUser(props) {
-  const {listUser, updateUser, viewUser} = props
+  const {listUser, updateUser, viewUser, deleteUser} = props
 
   return (
     <>
@@ -28,7 +28,7 @@ function TableUser(props) {
                 <td>
                   <button className="btn btn-secondary " onClick={() => viewUser(e)}>View</button>
                   <button className="btn btn-warning mx-3" onClick={()=>updateUser(e)}>Update</button>
-                  <button className="btn btn-danger">Delete</button>
+                  <button className="btn btn-danger" onClick={()=>deleteUser(e)}>Delete</button>
                 </td>
               </tr>
             );
