@@ -12,6 +12,7 @@ import ManageUser from "./Component/Admin/Content/ManageUser";
 import Dashboard from "./Component/Admin/Content/Dashboard";
 import Login from "./Component/User/Login";
 import { ToastContainer } from "react-toastify";
+import SignUp from "./Component/User/SignUp";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
@@ -27,6 +28,7 @@ root.render(
         <Route path="admin-user" element={<ManageUser />}></Route>
       </Route>
       <Route path="/login" element={<Login />}></Route>
+      <Route path="/sign-up" element={<SignUp />}></Route>
     </Routes>
     <ToastContainer
         position="top-right"

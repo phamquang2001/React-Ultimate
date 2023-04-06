@@ -1,40 +1,59 @@
 import { useState } from "react";
-import "./Login.scss";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-function Login() {
+import "./SignUp.scss";
+function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-  const handleSubmit = async () =>{
-    const data = await axios.post('http://localhost:8081/api/v1/login', {email: email, password: password})
-    console.log(data.data);
-    if(data && data.data.EC == -2){
-      toast.error(data.data.EM);
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+  const handleSubmit = async () => {
+    const isValid = validateEmail(email);
+    if (!isValid) {
+      toast.error("Invalid email");
     }
-    if(data && data.data.EC == 0) {
+    if (!password) {
+      toast.error("Invalid password");
+    }
+    const data = await axios.post("http://localhost:8081/api/v1/register", {
+      email: email,
+      username: username,
+      password: password,
+    });
+    console.log(data);
+
+    if (data && data.data.EC == 0) {
       toast.success(data.data.EM);
-      navigate("/")
-    }else {
+      navigate("/login");
+    } else {
       toast.error(data.data.EM);
     }
-  }
+  };
+
   const handleShowPassword = () => {
     setShowPassword(!showPassword)
   };
   return (
     <div>
       <div>
-        <span>Don't have an account yet?</span>
-        <button className="btn-sign-up" onClick={() => navigate("/sign-up")}>Sign up</button>
+        <span>Already have an account?</span>
+        <button className="btn-sign-up" onClick={() => navigate("/login")}>
+          Log in
+        </button>
       </div>
       <div>
         <div className="text-center mt-5">
-          <h3 className="col-4 mx-auto">Typeform</h3>
-          <h5 className="col-4 mx-auto pt-4">Hello, who's this?</h5>
+          <h3 className="col-4 mx-auto">Sign Up Form</h3>
         </div>
         <div className="sign-in-content col-4 mx-auto ">
           <div className="mb-4 sign-in-input">
@@ -47,10 +66,21 @@ function Login() {
               onChange={(e) => setEmail(e.target.value)}
             ></input>
           </div>
+          <div className="mb-4 sign-in-input">
+            <label>Username</label>
+            <input
+              type="username"
+              className="w-100 p-2 "
+              placeholder="abc"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            ></input>
+          </div>
+
           <div className="mb-2 sign-in-input show-password">
             <label>Password</label>
             <input
-              type={showPassword ? "text" : "password"} 
+              type= {showPassword ? "text" : "password"} 
               className="w-100 p-2 "
               placeholder="At least 8 character"
               value={password}
@@ -66,18 +96,23 @@ function Login() {
               </span>
             )}
           </div>
-          
-          <div className="mb-4">
-            <span>Forgot password?</span>
-          </div>
+
           <div>
-            <button className="w-100 btn-login" onClick={() =>handleSubmit()}>Log in to Typeform</button>
+            <button
+              className="mt-4 w-100 btn-login"
+              onClick={() => handleSubmit()}
+            >
+              Register Account
+            </button>
           </div>
-          <div className="back-home text-center" onClick={() =>navigate('/')}> &lt;&lt;Go to homepage</div>
+          <div className="back-home text-center" onClick={() => navigate("/")}>
+            {" "}
+            &lt;&lt;Go to homepage
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
-export default Login;
+export default SignUp;
