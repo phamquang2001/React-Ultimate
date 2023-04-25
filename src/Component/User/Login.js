@@ -4,18 +4,24 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import {CHECK_LOGIN_SUCCESS} from '../redux/action/userAction'
+
+
 function Login() {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const handleSubmit = async () =>{
     const data = await axios.post('http://localhost:8081/api/v1/login', {email: email, password: password})
-    console.log(data.data);
+    // console.log(data.data);
     if(data && data.data.EC == -2){
       toast.error(data.data.EM);
     }
     if(data && data.data.EC == 0) {
+      dispatch(CHECK_LOGIN_SUCCESS(data.data));
       toast.success(data.data.EM);
       navigate("/")
     }else {

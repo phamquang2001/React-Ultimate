@@ -13,36 +13,43 @@ import Dashboard from "./Component/Admin/Content/Dashboard";
 import Login from "./Component/User/Login";
 import { ToastContainer } from "react-toastify";
 import SignUp from "./Component/User/SignUp";
+import { Provider } from "react-redux";
+import { store, persistor } from "./Component/redux/store.js";
+import { PersistGate } from "redux-persist/integration/react";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />}>
-        <Route index element={<Home />}></Route>
-        <Route path="/user" element={<User />}></Route>
-        
-      </Route>
-      <Route path="/admin" element={<Admin />}>
-        <Route index element={<Dashboard />}></Route>
-        <Route path="admin-user" element={<ManageUser />}></Route>
-      </Route>
-      <Route path="/login" element={<Login />}></Route>
-      <Route path="/sign-up" element={<SignUp />}></Route>
-    </Routes>
-    <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
-  </BrowserRouter>
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route index element={<Home />}></Route>
+            <Route path="/user" element={<User />}></Route>
+          </Route>
+          <Route path="/admin" element={<Admin />}>
+            <Route index element={<Dashboard />}></Route>
+            <Route path="admin-user" element={<ManageUser />}></Route>
+          </Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/sign-up" element={<SignUp />}></Route>
+        </Routes>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+      </BrowserRouter>
+    </PersistGate>
+  </Provider>
   // </React.StrictMode>
 );
 
