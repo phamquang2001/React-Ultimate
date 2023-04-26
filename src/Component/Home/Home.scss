@@ -3,3 +3,25 @@
     bottom: 0;
     width: 100%;
 }
+
+.Doing-quizz {
+    position: absolute;
+    width: 40%;
+    left: 150px;
+    top: 30%;
+
+    div {
+        font-size: 30px;
+    }
+    button {
+        margin-top: 20px;
+        padding: 10px;
+        color: white;
+        background-color: black;
+        border-radius: 5px;
+        &:hover {
+            background-color: rgba(19, 16, 16, 0.178);
+            color: black;
+        }
+    }
+}

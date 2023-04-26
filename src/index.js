@@ -16,6 +16,8 @@ import SignUp from "./Component/User/SignUp";
 import { Provider } from "react-redux";
 import { store, persistor } from "./Component/redux/store.js";
 import { PersistGate } from "redux-persist/integration/react";
+import ListQuiz from "./Component/User/ListQuiz";
+import DetailQuiz from "./Component/User/DetailQuiz";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -26,8 +28,9 @@ root.render(
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<Home />}></Route>
-            <Route path="/user" element={<User />}></Route>
+            <Route path="/user" element={<ListQuiz />}></Route>
           </Route>
+          <Route path="/quiz/:id" element={<DetailQuiz />}></Route>
           <Route path="/admin" element={<Admin />}>
             <Route index element={<Dashboard />}></Route>
             <Route path="admin-user" element={<ManageUser />}></Route>

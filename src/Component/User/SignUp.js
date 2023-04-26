@@ -45,7 +45,7 @@ function SignUp() {
   };
   return (
     <div>
-      <div>
+      <div className="p-2">
         <span>Already have an account?</span>
         <button className="btn-sign-up" onClick={() => navigate("/login")}>
           Log in

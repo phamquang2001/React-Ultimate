@@ -33,7 +33,7 @@ function Login() {
   };
   return (
     <div>
-      <div>
+      <div className="p-2">
         <span>Don't have an account yet?</span>
         <button className="btn-sign-up" onClick={() => navigate("/sign-up")}>Sign up</button>
       </div>
@@ -44,7 +44,7 @@ function Login() {
         </div>
         <div className="sign-in-content col-4 mx-auto ">
           <div className="mb-4 sign-in-input">
-            <label>Email</label>
+            <label>Email (user@gmail.com)</label>
             <input
               type="email"
               className="w-100 p-2 "
@@ -54,7 +54,7 @@ function Login() {
             ></input>
           </div>
           <div className="mb-2 sign-in-input show-password">
-            <label>Password</label>
+            <label>Password (123456)</label>
             <input
               type={showPassword ? "text" : "password"} 
               className="w-100 p-2 "

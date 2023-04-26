@@ -15,10 +15,9 @@ function Header() {
   const handleLogout = async () => {
      localStorage.removeItem("persist:root");
      await dispatch(CHECK_LOG_OUT())
-    // navigate("/")
+    navigate("/")
   }
 
-  console.log({isAuthenticated})
   return (
     <Navbar bg="light" expand="lg">
       <Container>
