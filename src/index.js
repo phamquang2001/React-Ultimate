@@ -18,6 +18,7 @@ import { store, persistor } from "./Component/redux/store.js";
 import { PersistGate } from "redux-persist/integration/react";
 import ListQuiz from "./Component/User/ListQuiz";
 import DetailQuiz from "./Component/User/DetailQuiz";
+import ErrorPage from "./Component/Home/ErrorPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -37,6 +38,7 @@ root.render(
           </Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/sign-up" element={<SignUp />}></Route>
+          <Route path="*" element={<ErrorPage />}></Route>
         </Routes>
         <ToastContainer
           position="top-right"
