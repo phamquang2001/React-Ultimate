@@ -36,7 +36,7 @@ function ListQuiz() {
               <p className="card-text">{e.description}</p>
               <a className="btn btn-primary"
               onClick={() => {
-                navigate(`/quiz/${e.id}`)
+                navigate(`/quiz/${e.id}`,{ state: { description: e.description , image: e.image } })
               }}
               >
                 Start Now!

@@ -1,0 +1,29 @@
+.Detail-quiz {
+    display: flex;
+    gap: 20px;
+    padding: 30px;
+    .left-quiz {
+        padding: 20px;
+        width: 70%;
+        border: 1px solid black;
+        border-radius: 5px;
+        .description-quiz {
+            font-size: 30px;
+            font-weight: 600;
+        }
+        .footer {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .question-quiz {
+            font-size: 20px;
+            font-weight: 600;
+        }
+    }
+    .right-quiz {
+        width: 30%;
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+}
