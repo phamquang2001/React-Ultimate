@@ -1,0 +1,24 @@
+.detail-quiz-form {
+    padding: 50px;
+    .image-quiz{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 200px;
+        img {
+            height: 200px;
+            width: 300px;
+            border-radius: 10px;
+        }
+    }
+}
+
+.answers-quiz {
+    .answer-id {
+        margin-top: 5px;
+    }
+    .form-check-input{
+        margin-right: 10px;
+    }
+}
