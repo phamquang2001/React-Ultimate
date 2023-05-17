@@ -82,7 +82,7 @@ function DetailQuiz() {
         });
     }
     payload.answers = answers;
-    // http://localhost:8081/api/v1/quiz-submit
+
     let res = await axios.post('http://localhost:8081/api/v1/quiz-submit', {...payload} ,config)
     setResultQuiz(res.data.DT)
     console.log(res.data.DT)

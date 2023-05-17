@@ -63,9 +63,6 @@ const ModalCreateUser = (props) => {
     props.getUserPaginate(1)
   }
 
-
-  
-
   const handleUpdateImage = (e) =>{
     if(e.target.files[0] && e.target && e.target.files){
       const objectUrl = URL.createObjectURL(e.target.files[0]) 

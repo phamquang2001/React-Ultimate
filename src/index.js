@@ -20,6 +20,8 @@ import ListQuiz from "./Component/User/ListQuiz";
 import DetailQuiz from "./Component/User/DetailQuiz";
 import ErrorPage from "./Component/Home/ErrorPage";
 import ManageQuiz from "./Component/Admin/Quiz/ManageQuiz";
+import QuestionsAnswer from "./Component/Admin/Question/QuestionsAnswer";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -37,6 +39,7 @@ root.render(
             <Route index element={<Dashboard />}></Route>
             <Route path="admin-user" element={<ManageUser />}></Route>
             <Route path="admin-quiz" element={<ManageQuiz />}></Route>
+            <Route path="admin-question" element={<QuestionsAnswer />}></Route>
           </Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/sign-up" element={<SignUp />}></Route>

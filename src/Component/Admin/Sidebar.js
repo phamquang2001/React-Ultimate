@@ -20,7 +20,7 @@ import {
 import sidebarBg from "../../assets/bg2.jpg";
 import { DiReact } from "react-icons/di";
 import { AiOutlineMenu } from "react-icons/ai";
-import { NavLink , Link} from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 const SideBar = (props) => {
   const { image, collapsed, toggled, handleToggleSidebar } = props;
@@ -46,11 +46,10 @@ const SideBar = (props) => {
               whiteSpace: "nowrap",
             }}
           >
-            <NavLink  to='/'  style={{textDecoration: 'none' , color:'white'}}>
+            <NavLink to="/" style={{ textDecoration: "none", color: "white" }}>
               <DiReact size="3em" color="#005cc5" />
               <span>Quizz Test</span>
             </NavLink>
-            
           </div>
         </SidebarHeader>
 
@@ -61,7 +60,7 @@ const SideBar = (props) => {
               // suffix={<span className="badge red">New</span>}
             >
               Dashboard
-              <Link to='/admin'/>
+              <Link to="/admin" />
             </MenuItem>
             {/* <MenuItem icon={<FaGem />}> components </MenuItem> */}
           </Menu>
@@ -71,14 +70,20 @@ const SideBar = (props) => {
               icon={<AiOutlineMenu />}
               title="Features"
             >
-              <MenuItem> 
-              Quản lý Users
-              <Link to='/admin/admin-user'></Link>
+              <MenuItem>
+                Quản lý Users
+                <Link to="/admin/admin-user"></Link>
               </MenuItem>
-              <MenuItem> Quản lý bài Quiz
-              <Link to='/admin/admin-quiz'></Link>
+              <MenuItem>
+                {" "}
+                Quản lý bài Quiz
+                <Link to="/admin/admin-quiz"></Link>
               </MenuItem>
-              <MenuItem> Quản lý Câu Hỏi</MenuItem>
+              <MenuItem>
+                {" "}
+                Quản lý Câu Hỏi
+                <Link to="/admin/admin-question"></Link>
+              </MenuItem>
             </SubMenu>
           </Menu>
         </SidebarContent>
