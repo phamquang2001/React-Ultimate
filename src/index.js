@@ -9,7 +9,7 @@ import Admin from "./Component/Admin/Admin";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Component/Home/Home";
 import ManageUser from "./Component/Admin/Content/ManageUser";
-import Dashboard from "./Component/Admin/Content/Dashboard";
+
 import Login from "./Component/User/Login";
 import { ToastContainer } from "react-toastify";
 import SignUp from "./Component/User/SignUp";
@@ -36,7 +36,7 @@ root.render(
           </Route>
           <Route path="/quiz/:id" element={<DetailQuiz />}></Route>
           <Route path="/admin" element={<Admin />}>
-            <Route index element={<Dashboard />}></Route>
+            {/* <Route index element={<Dashboard />}></Route> */}
             <Route path="admin-user" element={<ManageUser />}></Route>
             <Route path="admin-quiz" element={<ManageQuiz />}></Route>
             <Route path="admin-question" element={<QuestionsAnswer />}></Route>

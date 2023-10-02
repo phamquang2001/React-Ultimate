@@ -51,14 +51,16 @@ const ModalCreateUser = (props) => {
       handleClose();
       
     }
-    const form = new FormData();
-    form.append('email', email);
-    form.append('password', password);
-    form.append('username', username);
-    form.append('role', role);
-    form.append('userImage', image);
-    await axios.post('http://localhost:8081/api/v1/participant', form)
+    // const form = new FormData();
+    // form.append('email', email);
+    // form.append('password', password);
+    // form.append('username', username);
+    // form.append('role', role);
+    // form.append('userImage', image);
+    // await axios.post('https://0bk255-8081.csb.app/DT', form)
     
+    // props.getUserPaginate(1)
+    await axios.post('https://0bk255-8081.csb.app/DT', {email,password,username,role,image})
     // getAPIList();
     props.getUserPaginate(1)
   }
@@ -77,9 +79,6 @@ const ModalCreateUser = (props) => {
       setPreviewImage('')
     }
   }
-
-  console.log(image)
-
 
   return (
     <>

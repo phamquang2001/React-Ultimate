@@ -11,7 +11,8 @@ function ModalDeleteUser(props) {
   const hanldeDeleteUser = async () =>{
     // const = data : {id: dataDelete.id}
     setShowDeleteModal(false)
-    await axios.delete("http://localhost:8081/api/v1/participant", {data : {id: dataDelete.id}})
+    // await axios.delete("https://0bk255-8081.csb.app/DT", {data : {id: dataDelete.id}})
+    await axios.delete(`https://0bk255-8081.csb.app/DT/${dataDelete.id}`)
     
     props.getUserPaginate(1)
     props.setCurrentPage(1)

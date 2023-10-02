@@ -10,6 +10,7 @@ const ModalViewUser = (props) => {
   const handleClose = () => {
     setShowViewModal(false);
   };
+  console.log(dataView.image)
 
   return (
     <>

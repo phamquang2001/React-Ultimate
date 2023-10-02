@@ -25,12 +25,14 @@ const ModalUpdateUser = (props) => {
     toast.success("Thanh cong");
     handleClose();
 
-    const form = new FormData();
-    form.append('id', dataUpdate.id);
-    form.append('username', username);
-    form.append('role', role);
-    form.append('userImage', image);
-    await axios.put('http://localhost:8081/api/v1/participant', form)
+    // const form = new FormData();
+    // form.append('id', dataUpdate.id);
+    // form.append('username', username);
+    // form.append('role', role);
+    // form.append('userImage', image);
+    // await axios.put('http://localhost:8081/api/v1/participant', form)
+    const id = dataUpdate.id
+    await axios.put(`https://0bk255-8081.csb.app/DT/${id}`, {email,username,role,image})
     props.getUserPaginate(currentPage)
   }
 
@@ -47,7 +49,7 @@ const ModalUpdateUser = (props) => {
     setUsername(dataUpdate.username)
     setRole(dataUpdate.role)
     if(dataUpdate.image) {
-        setPreviewImage(`data:image/jpeg;base64,${dataUpdate.image}`)
+        setPreviewImage(dataUpdate.image)
     }
   }, [dataUpdate])
 
@@ -55,12 +57,11 @@ const ModalUpdateUser = (props) => {
     if(e.target.files[0] && e.target && e.target.files){
       const objectUrl = URL.createObjectURL(e.target.files[0]) 
       setPreviewImage(objectUrl)
-      setImage(e.target.files[0])
+      setImage(URL.createObjectURL(e.target.files[0]))
     }else {
       setPreviewImage('')
     }
   }
-
 
   return (
     <>
@@ -148,8 +149,6 @@ const ModalUpdateUser = (props) => {
                 <img src={previewImage}></img> : 
                 <span>Preview Image</span>
               }
-              
-              
             </div>
 
           </Form>

@@ -21,7 +21,7 @@ function ManageUser(props) {
   const [dataDelete, setDataDelete] = useState({});
   const [currentPage, setCurrentPage] = useState(1)
 
-  const limit = 3;
+  // const limit = 3;
   const viewUser = (e) =>{
     setDataView(e)
     setShowViewModal(true)
@@ -38,20 +38,22 @@ function ManageUser(props) {
 
   useEffect(() => {
       getUserPaginate(1);
+      // getAPIList()
   }, []);
 
   // const getAPIList = async () => {
-  //   let res = await axios.get("https://rr4ruu-8000.csb.app/DT");
+  //   let res = await axios.get("https://0bk255-8081.csb.app/DT");
+  //   console.log(res.data)
   //   if (res.data.EC === 0) {
   //     setListUser(res.data);
   //   }
   // };
 
   const getUserPaginate = async ( page) => {
-    let res = await axios.get(`http://localhost:8081/api/v1/participant?page=${page}&limit=${limit}`);
+    let res = await axios.get('https://0bk255-8081.csb.app/DT');
     console.log(res.data.DT)
-      setListUser(res.data.DT.users);
-      setPageCount(res.data.DT.totalPages)
+      setListUser(res.data)
+      // setPageCount(res.data.DT.totalPages)
   };
 
 
@@ -73,7 +75,6 @@ function ManageUser(props) {
         <ModalCreateUser 
         showCreateModal={showCreateModal} 
         setShowCreateModal={setShowCreateModal} 
-        // getAPIList = {getAPIList}
         getUserPaginate = {getUserPaginate}
         />
       </div>
@@ -119,6 +120,7 @@ function ManageUser(props) {
         deleteUser = {deleteUser}
         listUser = {listUser}
         pageCount = {pageCount}
+        // getAPIList= {getAPIList}
         getUserPaginate = {getUserPaginate}
         currentPage = {currentPage}
         setCurrentPage = {setCurrentPage}

@@ -34,7 +34,7 @@ function Header() {
             <NavLink to="/user" className="nav-link">
               User
             </NavLink>
-            <NavLink to="/admin" className="nav-link">
+            <NavLink to="/admin/admin-user" className="nav-link">
               Admin
             </NavLink>
           </Nav>

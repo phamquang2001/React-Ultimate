@@ -37,3 +37,15 @@
         cursor: pointer;
     }
 }
+@media only screen and (max-width: 768px) {
+    .sign-in-content {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+    .w-100 {
+        width: auto !important;
+    }
+  }

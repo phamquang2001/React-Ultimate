@@ -55,13 +55,13 @@ const SideBar = (props) => {
 
         <SidebarContent>
           <Menu iconShape="circle">
-            <MenuItem
+            {/* <MenuItem
               icon={<FaTachometerAlt />}
               // suffix={<span className="badge red">New</span>}
             >
               Dashboard
               <Link to="/admin" />
-            </MenuItem>
+            </MenuItem> */}
             {/* <MenuItem icon={<FaGem />}> components </MenuItem> */}
           </Menu>
           <Menu className="menu-manager" iconShape="circle">
