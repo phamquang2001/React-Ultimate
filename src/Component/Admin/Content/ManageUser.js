@@ -39,7 +39,7 @@ function ManageUser(props) {
   useEffect(() => {
       getUserPaginate(1);
       // getAPIList()
-  }, []);
+  }, [listUser.length]);
 
   // const getAPIList = async () => {
   //   let res = await axios.get("https://0bk255-8081.csb.app/DT");
@@ -55,7 +55,7 @@ function ManageUser(props) {
       setListUser(res.data)
       // setPageCount(res.data.DT.totalPages)
   };
-
+console.log(listUser)
 
   return (
     <div className="manage-user">
